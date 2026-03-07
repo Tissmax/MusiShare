@@ -1,0 +1,17 @@
+{
+    "name": "@musi-share/schema",
+    "type": "module",
+    "exports": {
+        ".": {
+            "types": "./src/index.ts",
+            "default": "./dist/index.js"
+        }
+    },
+    "devDependencies": {
+        "@musi-share/typescript-config": "workspace:*",
+        "typescript": "latest"
+    },
+    "dependencies": {
+        "zod": "^4.3.6"
+    }
+}
