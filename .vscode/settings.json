@@ -1,7 +1,17 @@
 {
-  "eslint.workingDirectories": [
-    {
-      "mode": "auto"
-    }
-  ]
+	// Formate automatiquement à l'enregistrement
+	"editor.formatOnSave": true,
+
+	// Formate aussi quand tu colles du code
+	"editor.formatOnPaste": true,
+
+	// Préttier comme formateur par défaut (si extension installée)
+	"editor.defaultFormatter": "biomejs.biome",
+
+	// Active le formatage pour quelques langages courants
+	"[javascript]": { "editor.defaultFormatter": "biomejs.biome" },
+	"[typescript]": { "editor.defaultFormatter": "biomejs.biome" },
+	"[json]": { "editor.defaultFormatter": "biomejs.biome" },
+	"[html]": { "editor.defaultFormatter": "biomejs.biome" },
+	"[css]": { "editor.defaultFormatter": "biomejs.biome" }
 }

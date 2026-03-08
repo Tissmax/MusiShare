@@ -5,18 +5,44 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "format": "prettier --write \"**/*.{ts,tsx,md,json}\"",
     "check-types": "turbo run check-types",
     "add:dev:services": "pnpm add -D -r --filter=api-gateway --filter=ms-monitor --filter=ms-music --filter=ms-notifications --filter=ms-socket --filter=ms-users",
-    "add:dev:global": "pnpm add -D -r --filter=api-gateway --filter=ms-monitor --filter=ms-music --filter=ms-notifications --filter=ms-socket --filter=ms-users --filter=web"
+    "add:dev:global": "pnpm add -D -r --filter=api-gateway --filter=ms-monitor --filter=ms-music --filter=ms-notifications --filter=ms-socket --filter=ms-users --filter=web",
+    "add:dev:web": "pnpm add -D --filter=web",
+    "add:dev:gateway": "pnpm add -D --filter=api-gateway",
+    "add:dev:monitor": "pnpm add -D --filter=ms-monitor",
+    "add:dev:music": "pnpm add -D --filter=ms-music",
+    "add:dev:notifications": "pnpm add -D --filter=ms-notifications",
+    "add:dev:socket": "pnpm add -D --filter=ms-socket",
+    "add:dev:users": "pnpm add -D --filter=ms-users",
+    "add:services": "pnpm add -r --filter=api-gateway --filter=ms-monitor --filter=ms-music --filter=ms-notifications --filter=ms-socket --filter=ms-users",
+    "add:global": "pnpm add -r --filter=api-gateway --filter=ms-monitor --filter=ms-music --filter=ms-notifications --filter=ms-socket --filter=ms-users --filter=web",
+    "add:web": "pnpm add --filter=web",
+    "add:gateway": "pnpm add --filter=api-gateway",
+    "add:monitor": "pnpm add --filter=ms-monitor",
+    "add:music": "pnpm add --filter=ms-music",
+    "add:notifications": "pnpm add --filter=ms-notifications",
+    "add:socket": "pnpm add --filter=ms-socket",
+    "add:users": "pnpm add --filter=ms-users",
+    "prepare": "husky"
   },
   "devDependencies": {
-    "prettier": "^3.7.4",
+    "@biomejs/biome": "2.4.6",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.3.2",
     "turbo": "^2.8.14",
     "typescript": "5.9.2"
   },
   "packageManager": "pnpm@9.0.0",
   "engines": {
     "node": ">=18"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && pnpm run format && pnpm test && node scripts/format-staged.js",
+      "pre-push": "turbo run check-types",
+      "post-checkout": "node scripts/validate-branch.js"
+    }
   }
 }

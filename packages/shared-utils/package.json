@@ -1,10 +1,18 @@
 {
-  "name": "@musi-share/schema",
+  "name": "@musi-share/shared-utils",
   "type": "module",
   "exports": {
     ".": {
       "types": "./src/index.ts",
       "default": "./dist/index.js"
+    },
+    "./constants": {
+      "types": "./src/constants/index.ts",
+      "default": "./dist/constants/index.js"
+    },
+    "./transformers": {
+      "types": "./src/transformers/index.ts",
+      "default": "./dist/transformers/index.js"
     }
   },
   "devDependencies": {
